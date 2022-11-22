@@ -23,6 +23,9 @@ $ pip install -r requirements.txt
 ```
 4. Install torch scatter.
 ```
+# try this for pytorch 1.13
+pip install torch-scatter -f https://data.pyg.org/whl/torch-1.12.0+${CUDA}.html
+# below for pytorch 1.12 or earlier
 $ conda install pytorch-scatter -c pyg
 ```
 5. Install jax related libraries (cpu version is fine, jax is only used to generate background augmentations).
