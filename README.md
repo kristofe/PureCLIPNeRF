@@ -16,7 +16,7 @@ $ conda activate PureCLIPNeRF
 2. Install PyTorch. (Force pytorch 1.11.0
 ```
 $ conda install pytorch==1.11.0 torchvision==0.12.0 torchaudio==0.11.0 -c pytorch
-#$ conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch
+~~$ conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch~~
 ```
 3. Install packages required by DVGO.
 ```
@@ -24,9 +24,7 @@ $ pip install -r requirements.txt
 ```
 4. Install torch scatter.
 ```
-# try this for pytorch 1.13
-pip install torch-scatter -f https://data.pyg.org/whl/torch-1.12.0+${CUDA}.html
-# below for pytorch 1.12 or earlier
+
 $ conda install pytorch-scatter -c pyg
 ```
 5. Install jax related libraries (cpu version is fine, jax is only used to generate background augmentations).
