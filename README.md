@@ -13,9 +13,10 @@ Initial code release for the paper [**Understanding Pure CLIP Guidance for Voxel
 $ conda create -n PureCLIPNeRF python=3.8
 $ conda activate PureCLIPNeRF
 ```
-2. Install PyTorch.
+2. Install PyTorch. (Force pytorch 1.11.0
 ```
-$ conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch
+$ conda install pytorch==1.11.0 torchvision==0.12.0 torchaudio==0.11.0 -c pytorch
+#$ conda install pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch
 ```
 3. Install packages required by DVGO.
 ```
