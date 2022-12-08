@@ -32,7 +32,7 @@ def config_parser():
     '''Define command line arguments
     '''
     parser = argparse.ArgumentParser(formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument('--config', required=True,
+    parser.add_argument('--config', #required=True,
                         help='config file path')
     parser.add_argument("--seed", type=int, default=777,
                         help='Random seed')
@@ -100,6 +100,17 @@ jax_key = jax.random.PRNGKey(0)
 # load setup
 parser = config_parser()
 args = parser.parse_args()
+
+
+
+## HARDCODE COMMAND LINE:
+#python run.py --config configs/low/exp_vit16.py --prompt "steampunk city; trending on artstation."
+args.config = 'configs/low/exp_open_vit32_kds.py'
+args.prompt = "a pictrure of an portal companion cube rendered in 3D"
+args.i_print = 100
+args.no_reload = True
+args.no_reload_optimizer = True
+
 cfg = mmcv.Config.fromfile(args.config)
 
 if args.prompt is not None:

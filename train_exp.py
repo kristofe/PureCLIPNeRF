@@ -517,7 +517,7 @@ def scene_rep_reconstruction(args, cfg, cfg_model, cfg_train, xyz_min, xyz_max, 
                 writer.add_scalar('Scalar/voxel res z', model.world_size[2].item(), global_step + base_step)
 
         # check log & save
-        if global_step%args.i_print==0:
+        if global_step%args.i_print==0 or global_step == 1:
             eps_time = time.time() - time0
             eps_time_str = f'{eps_time//3600:02.0f}:{eps_time//60%60:02.0f}:{eps_time%60:02.0f}'
             tqdm.write(f'scene_rep_reconstruction ({stage}): iter {global_step:6d} / '
@@ -535,6 +535,9 @@ def scene_rep_reconstruction(args, cfg, cfg_model, cfg_train, xyz_min, xyz_max, 
                 rgb8 = utils.to8b(render_result['rgb_marched'].detach().reshape(-1, cfg.data.resolution, cfg.data.resolution, 3)[0].cpu().numpy())
                 filename = os.path.join(cfg.basedir, cfg.expname, 'exp', '{}.png'.format(global_step + base_step))
                 imageio.imwrite(filename, rgb8)
+                alpha8 = utils.to8b(render_result['alphainv_last'].detach().reshape(-1, cfg.data.resolution, cfg.data.resolution, 1)[0].cpu().numpy())
+                filename = os.path.join(cfg.basedir, cfg.expname, 'exp', '{}_alpha.png'.format(global_step + base_step))
+                imageio.imwrite(filename, alpha8)
 
             kl_lst = []
             sim_lst = []

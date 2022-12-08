@@ -56,7 +56,7 @@ def sample_cameras(basedir, half_res=False, testskip=1, resolution=None, num_pos
     num_test = 1
 
     th_range = [-180, 180]
-    phi_range = [-30, -30]
+    phi_range = [-60, 60]
     rad_range = [4., 4.]
     focal_mult_range = [1.2, 1.2]
 

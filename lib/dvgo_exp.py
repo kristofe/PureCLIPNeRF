@@ -66,6 +66,20 @@ class DirectVoxGO(torch.nn.Module):
         # init density voxel grid
         self.density = torch.nn.Parameter(torch.zeros([1, 1, *self.world_size]))
 
+        #HACK FOR NOW<START>  
+        #Force a cube at start
+        '''
+        r = 10
+        w = self.world_size[2].item()//2
+        h = self.world_size[0].item()//2
+        d = self.world_size[1].item()//2
+        density = torch.zeros([1, 1, *self.world_size])
+        density[:,:,d-r:d+r,h-r:h+r,w-r:w+r] = 16.0
+        self.density = torch.nn.Parameter(density)
+        '''
+        #HACK FOR NOW<END>  
+
+
         # init color representation
         self.rgbnet_kwargs = {
             'rgbnet_dim': rgbnet_dim, 'rgbnet_direct': rgbnet_direct,
